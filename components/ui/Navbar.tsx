@@ -1,6 +1,9 @@
-import Link from "next/link"
+import { useContext } from 'react'
 
-import { AppBar, Box, Toolbar, Button, Typography} from "@mui/material"
+import Link from 'next/link'
+
+import { AppBar, Box, Toolbar, Button, Typography} from '@mui/material'
+import { UIContext } from './UIContext'
 
 const links = [
   {
@@ -14,6 +17,9 @@ const links = [
 ]
 
 export const Navbar = () => {
+
+  const { openSideMenu } = useContext (UIContext);
+
   return (
     <AppBar>
       <Toolbar>
@@ -54,9 +60,10 @@ export const Navbar = () => {
               <Button>Sign Up</Button>
             </Box>
 
-            <Button sx={{
-                display: { md: 'none' },
-            }}>Menu
+            <Button
+                onClick={ openSideMenu }
+                sx={{display: { md: 'none' },}}>
+                  Menu
             </Button>
       </Toolbar>
     </AppBar>

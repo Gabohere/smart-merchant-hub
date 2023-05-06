@@ -1,11 +1,19 @@
+import { useContext } from "react"
+
 import { Box, Divider, Drawer, IconButton, Input, InputAdornment, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@mui/material"
 import { AccountCircleOutlined, AdminPanelSettings, CategoryOutlined, ConfirmationNumberOutlined, LoginRounded, LogoutRounded, SearchOutlined} from "@mui/icons-material"
+import { UIContext } from "./UIContext";
+
 
 
 export const SideMenu = () => {
+
+  const { sidemenuOpen, closeSideMenu } = useContext (UIContext);
+    
   return (
     <Drawer
-        open={ false }
+        open={ sidemenuOpen }
+        onClose={ closeSideMenu }
         anchor='right'
         sx={{ backdropFilter: 'blur(4px)', transition: 'all 0.5s ease-out' }}
     >
